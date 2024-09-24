@@ -79,7 +79,8 @@ function iniciar() {
         case "1":
             const timeCollege = sortearHighSchool();
             const altura = sortearAltura();
-            alert(`O time sorteado foi ${timeCollege}! Você terá ${altura}m de altura!`);
+            alert(`O time sorteado foi ${timeCollege}! Você terá ${altura}m de altura! 
+Vamos começar...`);
             if (["Duke", "UConn", "Purdue", "Alabama"].includes(timeCollege)) {
                 iniciarJornadaEstrela();
             } else {
@@ -137,10 +138,12 @@ você tem tempo para fazer mais uma coisa, oque você faz?
         2 - Dormir 😪`)
         if(opcao2 == "1"){
             habilidade+=1
-            alert(`Você teve aulas sobre técnicas com o treinador. Habilidade: ${habilidade}`)
+            alert(`Você teve aulas sobre técnicas com o treinador. 
+Habilidade: ${habilidade}`)
         }
         else if(opcao2 == "2"){
-            alert('Você dormiu até o final do intervalo!')
+            alert(`Você dormiu até o final do intervalo! 
+Habilidade: ${habilidade}`)
         }
     }
     else if(opcao1 == "2"){
@@ -156,7 +159,8 @@ você tem tempo para fazer mais uma coisa, oque você faz?
             alert(`Você treinou e ficou com ${habilidade} pontos de habilidade.`)
         }
         else if(opcao2 == "2"){
-            alert('Você dormiu, o técnico ficou um pouco bravo!')
+            alert(`Você dormiu, o técnico ficou um pouco bravo! 
+Habilidade: ${habilidade}`)
         }
     }
     else if(opcao1 == "3"){
@@ -183,11 +187,13 @@ você tem tempo para fazer mais uma coisa, oque você faz?
             2 - Dormir 😪`)
             if(opcao2 == "1"){
                 habilidade+=2
-                alert(`Você teve aulas sobre técnicas com o treinador. Habilidade: ${habilidade}`)
+                alert(`Você teve aulas sobre técnicas com o treinador. 
+Habilidade: ${habilidade}`)
             }
             else if(opcao2 == "2"){
-                alert('Você dormiu até o final do intervalo!')
                 habilidade++
+                alert(`Você dormiu até o final do intervalo! 
+Habilidade: ${habilidade}`)
             }
         }
         else if(opcao1 == "2"){
@@ -203,13 +209,15 @@ você tem tempo para fazer mais uma coisa, oque você faz?
                 alert(`Você treinou e ficou com ${habilidade} pontos de habilidade`)
             }
             else if(opcao2 == "2"){
-                alert('Você dormiu, o técnico ficou um pouco bravo!')
                 habilidade++
+                alert(`Você dormiu, o técnico ficou um pouco bravo!
+Habilidade: ${habilidade}`)
             }
         }
         else if(opcao1 == "3"){
-            alert('Você dormiu o intervalo inteiro, o técnico ficou nervoso!')
             habilidade++
+            alert(`Você dormiu o intervalo inteiro, o técnico ficou nervoso!
+Habilidade: ${habilidade}`)
         }
         alert("Começou o Draft da NBA 💪! Veja a colocação em que você será selecionado!")    
         alert(`Você foi Draftado pelo ${sortearDraft()} na ${sortearEstrela()} posição!!! 
