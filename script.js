@@ -23,10 +23,10 @@ let sorteioDado = 0
 
         if (numeroSorteadoJogador > numeroSorteadoInimigo) {
             energiaInimigo -= 1;
-            alert(`O inimigo tirou ${numeroSorteadoInimigo}. Você acertou uma cesta! A energia dele agora é ${energiaInimigo}`);
+            alert(`O oponente tirou ${numeroSorteadoInimigo}. Você acertou uma cesta! A energia dele agora é ${energiaInimigo}`);
         } else if (numeroSorteadoJogador < numeroSorteadoInimigo) {
             energiaJogador -= 1;
-            alert(`O inimigo tirou ${numeroSorteadoInimigo} e fez uma cesta! Sua energia agora é ${energiaJogador}`);
+            alert(`O oponente tirou ${numeroSorteadoInimigo} e fez uma cesta! Sua energia agora é ${energiaJogador}`);
         } else {
             alert("Empate! Ninguém marcou pontos.");
         }
@@ -80,7 +80,6 @@ function iniciar() {
             const timeCollege = sortearHighSchool();
             const altura = sortearAltura();
             alert(`O time sorteado foi ${timeCollege}! Você terá ${altura}m de altura!`);
-            
             if (["Duke", "UConn", "Purdue", "Alabama"].includes(timeCollege)) {
                 iniciarJornadaEstrela();
             } else {
@@ -126,35 +125,35 @@ function sortearHighSchool() {
 function iniciarJornadaAtleta(){
     var habilidade = 0
     const opcao1 = prompt(`Você está no colégio, oque você faz?
-    1 - Treinar
-    2 - Estudar técnicas
-    3 - Dormir`)
+        1 - Treinar 🏀
+        2 - Estudar técnicas 🧠
+        3 - Dormir 😪`)
     if(opcao1 == "1"){
         treino()
         habilidade+=2
         const opcao2 = prompt(`Você treinou e ficou com ${habilidade} pontos de habilidade, 
 você tem tempo para fazer mais uma coisa, oque você faz?
-        1 - Estudar técnicas
-        2 - Dormir`)
+        1 - Estudar técnicas 🧠
+        2 - Dormir 😪`)
         if(opcao2 == "1"){
-            alert(`Você teve aulas sobre técnicas com o treinador. Habilidade: ${habilidade}`)
             habilidade+=1
+            alert(`Você teve aulas sobre técnicas com o treinador. Habilidade: ${habilidade}`)
         }
         else if(opcao2 == "2"){
-            alert('Você dormiu até o final do intervalo')
+            alert('Você dormiu até o final do intervalo!')
         }
     }
     else if(opcao1 == "2"){
-        alert('Você teve aulas sobre técnicas com o treinador')
+        alert('Você teve aulas sobre técnicas com o treinador.')
         habilidade+=1
         const opcao2 = prompt(`Você estudou e ficou com ${habilidade} pontos de habilidade, 
 você tem tempo para fazer mais uma coisa, oque você faz?
-        1 - Treinar
-        2 - Dormir`)
+        1 - Treinar 🏀
+        2 - Dormir 😪`)
         if(opcao2 == "1"){
             treino()
             habilidade+=2
-            alert(`Você treinou e ficou com ${habilidade} pontos de habilidade`)
+            alert(`Você treinou e ficou com ${habilidade} pontos de habilidade.`)
         }
         else if(opcao2 == "2"){
             alert('Você dormiu, o técnico ficou um pouco bravo!')
@@ -163,40 +162,41 @@ você tem tempo para fazer mais uma coisa, oque você faz?
     else if(opcao1 == "3"){
         alert('Você dormiu o intervalo inteiro, o técnico ficou nervoso!')
     }
-    alert("Começou o Draft da NBA, veja a colocação em que você será selecionado!")    
-    alert(`Você foi Draftado pelo ${sortearDraft()} na ${sortearAtleta()} posição! Parabéns!!`)
+    alert("Começou o Draft da NBA 💪! Veja se você será Draftado!")    
+    alert(`Você foi Draftado pelo ${sortearDraft()} na ${sortearAtleta()} posição! 
+Parabéns! 🎉🎉`)
 }
 
 // Função para iniciar a jornada de uma estrela da NBA
 function iniciarJornadaEstrela(){
     var habilidade = 0
     const opcao1 = prompt(`Você está no colégio, oque você faz?
-        1 - Treinar
-        2 - Estudar técnicas
-        3 - Dormir`)
+        1 - Treinar 🏀
+        2 - Estudar técnicas 🧠
+        3 - Dormir 😪`)
         if(opcao1 == "1"){
             treino()
             habilidade+=3
             const opcao2 = prompt(`Você treinou e ficou com ${habilidade} pontos de habilidade, 
 você tem tempo para fazer mais uma coisa, oque você faz?
-            1 - Estudar técnicas
-            2 - Dormir`)
+            1 - Estudar técnicas 🧠
+            2 - Dormir 😪`)
             if(opcao2 == "1"){
                 habilidade+=2
                 alert(`Você teve aulas sobre técnicas com o treinador. Habilidade: ${habilidade}`)
             }
             else if(opcao2 == "2"){
-                alert('Você dormiu até o final do intervalo')
+                alert('Você dormiu até o final do intervalo!')
                 habilidade++
             }
         }
         else if(opcao1 == "2"){
-            alert('Você teve aulas sobre técnicas com o treinador')
+            alert('Você teve aulas sobre técnicas com o treinador.')
             habilidade+=2
             const opcao2 = prompt(`Você estudou e ficou com ${habilidade} pontos de habilidade, 
 você tem tempo para fazer mais uma coisa, oque você faz?
-            1 - Treinar
-            2 - Dormir`)
+            1 - Treinar 🏀
+            2 - Dormir 😪`)
             if(opcao2 == "1"){
                 treino()
                 habilidade+=3
@@ -211,18 +211,47 @@ você tem tempo para fazer mais uma coisa, oque você faz?
             alert('Você dormiu o intervalo inteiro, o técnico ficou nervoso!')
             habilidade++
         }
-        alert("Começou o Draft da NBA, veja a colocação em que você será selecionado!")    
-        alert(`Você foi Draftado pelo ${sortearDraft()} na ${sortearEstrela()} posição! Parabéns!!`)
+        alert("Começou o Draft da NBA 💪! Veja a colocação em que você será selecionado!")    
+        alert(`Você foi Draftado pelo ${sortearDraft()} na ${sortearEstrela()} posição!!! 
+Grande promessa 🔥🔥`)
 }
 
 //************************************* Função para sortear o time no draft *************************************
 
 function sortearDraft() {
-    const times = ["Boston Celtics", "Brooklyn Nets", "New York Knicks", "Philadelphia 76ers", "Toronto Raptors", 
-    "Chicago Bulls", "Cleveland Cavaliers", "Detroit Pistons", "Indiana Pacers", "Miami Heat", "Milwaukee Bucks",
-    "Orlando Magic", "Atlanta Hawks", "Charlotte Hornets", "Washington Wizards", "Boston Celtics", "Brooklyn Nets", 
-    "New York Knicks", "Philadelphia 76ers", "Toronto Raptors", "Chicago Bulls", "Cleveland Cavaliers", "Detroit Pistons", 
-    "Indiana Pacers", "Miami Heat", "Milwaukee Bucks", "Orlando Magic", "Atlanta Hawks", "Charlotte Hornets", "Washington Wizards"];
+    const times = [
+        "Atlanta Hawks 🦅",
+        "Boston Celtics 🍀🤮",
+        "Brooklyn Nets 🌇",
+        "Charlotte Hornets 🐝",
+        "Chicago Bulls 🐂",
+        "Cleveland Cavaliers 🏹",
+        "Dallas Mavericks 🐴",
+        "Denver Nuggets 🗻",
+        "Detroit Pistons 🔩",
+        "Golden State Warriors 🌉",
+        "Houston Rockets 🚀",
+        "Indiana Pacers 🦵",
+        "Los Angeles Clippers 📎",
+        "Los Angeles Lakers 🌊",
+        "Memphis Grizzlies 🐻",
+        "Miami Heat 🔥",
+        "Milwaukee Bucks 🦌",
+        "Minnesota Timberwolves 🐺",
+        "New Orleans Pelicans 🦢",
+        "New York Knicks 🗽",
+        "Oklahoma City Thunder ⚡",
+        "Orlando Magic 🌠",
+        "Philadelphia 76ers ⭐",
+        "Phoenix Suns 🌞",
+        "Portland Trail Blazers 🛑",
+        "Sacramento Kings 👑",
+        "San Antonio Spurs 👤",
+        "Toronto Raptors 🦖",
+        "Utah Jazz 🎷",
+        "Washington Wizards 🧙"
+    ];
+    
   
     const sorteado = Math.floor(Math.random() * times.length);
     return times[sorteado];
@@ -231,7 +260,7 @@ function sortearDraft() {
   //************************************* Função para sortear a posição das estrelas no draft *************************************
 
 function sortearEstrela() {
-    const posiçãoEstrela = ["1","2","3","4","5","6","7","8","9","10"];
+    const posiçãoEstrela = ["1º","2º","3º","4º","5º","6º","7º","8º","9º","10º"];
   
     const sorteado1 = Math.floor(Math.random() * posiçãoEstrela.length);
     return posiçãoEstrela[sorteado1];
@@ -240,11 +269,11 @@ function sortearEstrela() {
  //************************************* Função para sortear a posição dos atletas no draft *************************************
 
 function sortearAtleta() {
-    const posiçãoAtleta = ["20", "21", "22", "23", "24", "25", "26", 
-    "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", 
-    "37", "38", "39", "40", "41", "42", "43", "44", "45", "46",
-    "47", "48", "49", "50", "51", "52", "53", "54", "55", "56",
-    "57", "58", "59", "60"];
+    const posiçãoAtleta = ["20º", "21º", "22º", "23º", "24º", "25º", "26º", 
+    "27º", "28º", "29º", "30º", "31º", "32º", "33º", "34º", "35º", "36º", 
+    "37º", "38º", "39º", "40º", "41º", "42º", "43º", "44º", "45º", "46º",
+    "47º", "48º", "49º", "50º", "51º", "52º", "53º", "54º", "55º", "56º",
+    "57º", "58º", "59º", "60º"];
   
     const sorteado2 = Math.floor(Math.random() * posiçãoAtleta.length);
     return posiçãoAtleta[sorteado2];
