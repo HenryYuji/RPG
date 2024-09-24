@@ -70,30 +70,28 @@ let sorteioDado = 0
 
 //************************************* Função que roda ao iniciar o jogo *************************************
 
-function iniciar(){
+function iniciar() {
     const personagem = prompt(`Seja bem-vindo ao Carreira NBA! Escolha uma das opções: 
         1 - Começar a Carreira
-        2 - Sair do Jogo`)
+        2 - Sair do Jogo`);
 
-    switch(personagem){
+    switch (personagem) {
         case "1":
-            timeCollege = sortearHighSchool()
-            altura = sortearAltura()
-            alert(`O time sorteado foi ${timeCollege}! Você terá ${altura}m de altura!`) 
-        break
+            const timeCollege = sortearHighSchool();
+            const altura = sortearAltura();
+            alert(`O time sorteado foi ${timeCollege}! Você terá ${altura}m de altura!`);
+            
+            if (["Duke", "UConn", "Purdue", "Alabama"].includes(timeCollege)) {
+                iniciarJornadaEstrela();
+            } else {
+                iniciarJornadaAtleta();
+            }
+            break;
         case "2":
-            alert("Espero te ver novamente!")
-        break
+            alert("Espero te ver novamente!");
+            break;
         default:
-            alert("Isso não é uma opção! Recomeço do zero cabeçudo!")
-    }
-    if(timeCollege === "Duke"||"UConn"||"Purdue"||"Alabama"){
-        iniciarJornadaEstrela()
-    }
-    else if(timeCollege === "North Carolina"||"South Carolina"||"Houston"||
-    "Tennessee"||"Kentucky"||"Illinois"||"San Diego State"||"San Diego State"||
-    "Arizona"||"Michigan State"||"Baylor") {
-        iniciarJornadaAtleta()
+            alert("Isso não é uma opção! Recomeço do zero cabeçudo!");
     }
 }
 
@@ -127,7 +125,6 @@ function sortearHighSchool() {
 // Função para iniciar a jornada do atleta
 function iniciarJornadaAtleta(){
     var habilidade = 0
-    alert('AAAAAAA')
     const opcao1 = prompt(`Você está no colégio, oque você faz?
     1 - Treinar
     2 - Estudar técnicas
