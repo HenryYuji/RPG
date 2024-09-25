@@ -54,42 +54,100 @@ function definirPontos(pontos) {
         case '1':
             if (pontosHabilidade >= 50) {
                 resultado = `Você acertou a cesta de 3 pontos!! Torcida comemorou! 🏹🔥 
-            (+5 pontos de habilidade)`;
+                (+5 pontos de habilidade)`;
                 pontosHabilidade+=5
             } else {
                 resultado = `Você falhou na cesta de 3 pontos. 
-Pelo visto você não tem habilidade suficiente`;
+Pelo visto você não tem habilidade suficiente.`;
             }
             break;
         case '2':
             if (pontosHabilidade >= 30) {
                 resultado = `Você acertou a enterrada!! A torcida foi a loucura! 💪🔥 
-            (+5 pontos de habilidade)`;
+                (+5 pontos de habilidade)`;
                 pontosHabilidade+=5
             } else {
                 resultado = `Você falhou na enterrada. 
-Pelo visto você não tem habilidade suficiente`;
+Pelo visto você não tem habilidade suficiente.`;
             }
             break;
         case '3':
             if (pontosHabilidade >= 10) {
                 resultado = `Você acertou o passe e fez uma assistência!! 🏀🔥 
-            (+5 pontos de habilidade)`;
+                (+5 pontos de habilidade)`;
                 pontosHabilidade+=5
             } else {
                 resultado = `Você falhou no passe. 
-Pelo visto você não tem habilidade suficiente`;
+Pelo visto você não tem habilidade suficiente.`;
             }
             break;
         case '4':
             if (pontosHabilidade >= 20) {
                 resultado = `Você acertou o drible!! Seu técnico se surpreendeu! 🖐🔥 
-            (+5 pontos de habilidade)`;
+                (+5 pontos de habilidade)`;
                 pontosHabilidade+=5
             } else {
                 resultado = `Você falhou no drible. 
-Pelo visto você não tem habilidade suficiente`;
+Pelo visto você não tem habilidade suficiente.`;
             }
+            break;
+        default:
+            resultado = "Opção inválida. Tente novamente.";
+    }
+    alert(resultado);
+}
+
+function acaoJogador2() {
+    const opcao = prompt(`Escolha uma ação: 
+1 - Arremessar de 3 pontos 🏹
+2 - Cortar e driblar pro garrafão 🖐
+3 - Passar para o pivô 🏀`);
+    let resultado;
+    switch (opcao) {
+        case '1':
+            resultado = 'Você tentou arremessar marcado mas tomou um toco humilhante. 🤕'
+            break;
+        case '2':
+            if (pontosHabilidade >= 30) {
+                resultado = `Você acertou o corte e fez uma ótima bandeija!! 🖐🔥
+                (+5 pontos de habilidade)`;
+                pontosHabilidade+=5
+            } else {
+                resultado = `Você falhou no corte e o time oponente acertou um contra-ataque. 
+Pelo visto você não tem habilidade suficiente.`;
+            }
+            break;
+        case '3':
+            resultado = `Você fez um passe quicado para o seu pivô e ele acertou um gancho!! Ótima assistência! 🏀🔥 
+            (+5 pontos de habilidade)`;
+            pontosHabilidade+=5
+            break;
+        default:
+            resultado = "Opção inválida. Tente novamente.";
+    }
+    alert(resultado);
+}
+
+function acaoJogador3() {
+    const opcao = prompt(`Escolha uma ação: 
+1 - Arremessar do meio da quadra 🏹
+2 - Segurar a bola até acabar a partida 🖐
+3 - Passar para o ala avançado 🏀`);
+    let resultado;
+    switch (opcao) {
+        case '1':
+            if (pontosHabilidade >= 40) {
+                resultado = ``;
+                pontosHabilidade+=5
+            } else {
+                resultado = ``;
+            }
+            break;
+        case '2':
+            resultado = ``
+            break;
+        case '3':
+            resultado = ``;
             break;
         default:
             resultado = "Opção inválida. Tente novamente.";
@@ -188,7 +246,7 @@ você tem tempo para fazer mais uma coisa, oque você faz?
             alert(`Você treinou e ficou com ${pontosHabilidade} pontos de habilidade.`)
         }
         else if(opcao2 == "2"){
-            ´pontosHabilidade+=5
+            pontosHabilidade+=5
             alert(`Você dormiu, o técnico ficou um pouco bravo! 
 Habilidade: ${pontosHabilidade}`)
         }
@@ -325,9 +383,14 @@ function sortearAtleta() {
     if (inicioNba === "S"){
         alert('Seu primeiro jogo! Você entrou no inicio do segundo quarto e você recebe a bola...')
         acaoJogador()
+        alert('5 minutos do terceiro quarto, você recebe a bola na linha de 3 mas você está sendo marcado...')
+        acaoJogador2()
+        alert('Últimos 20 segundos de jogo! Você pegou o rebote defensivo, seu time está ganhando de 1 ponto...')
+        acaoJogador3()
     } else if(inicioNba === 'N') {
         alert('Você teve um má início de carreira! Seu time perdeu e não classificou para a final!')
     } else{
         alert('Digite uma opção válida')
+        jogoNba()
     }
-  }
+  } 
