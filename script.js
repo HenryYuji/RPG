@@ -1,9 +1,11 @@
-//************************************* Variáveis globais que devem ser inicializadas no início do jogo *************************************
-
-//variável que irá guardar o número sorteado no dado
-let sorteioDado = 0
-
 //************************************* Funções que serão repetidas ao longo do jogo *************************************
+
+let pontosHabilidade = 0
+
+// Função para definir a variável pontos de habilidade
+function definirPontos(pontos) {
+    pontosHabilidade = pontos
+}
 
   // Função para rolar um dado (1 a 20)
   function rolarDado() {
@@ -39,33 +41,60 @@ let sorteioDado = 0
     }
 }
 
-    // Função para partida normal
-    function partida() {
-        let energiaTime = 5;
-        let energiaInimigo = 5;
-    
-        while (energiaTime > 0 && energiaInimigo > 0) {
-            alert(`A energia do seu time é ${energiaTime} e a energia do time inimigo é ${energiaInimigo}. Role os dados!`);
-            let numeroSorteadoJogador = rolarDado();
-            alert(`Você tirou ${numeroSorteadoJogador}! Agora é a vez do time inimigo!`);
-            let numeroSorteadoInimigo = rolarDado();
-    
-            if (numeroSorteadoJogador > numeroSorteadoInimigo) {
-                energiaInimigo -= 1;
-                alert(`O time inimigo tirou ${numeroSorteadoInimigo}. Seu time fez uma cesta! A energia dele agora é ${energiaInimigo}`);
-            } else if (numeroSorteadoJogador < numeroSorteadoInimigo) {
-                energiaJogador -= 1;
-                alert(`O time inimigo tirou ${numeroSorteadoInimigo} e fez uma cesta! A energia do seu time agora é ${energiaJogador}`);
+   //************************************* Função para avaliar a ação do jogador em uma partida *************************************
+
+   function acaoJogador() {
+    const opcao = prompt(`Escolha uma ação: 
+1 - Cesta de 3 pontos 🏹
+2 - Enterrada 💪
+3 - Passe 🏀
+4 - Drible 🖐`);
+    let resultado;
+    switch (opcao) {
+        case '1':
+            if (pontosHabilidade >= 50) {
+                resultado = `Você acertou a cesta de 3 pontos!! Torcida comemorou! 🏹🔥 
+            (+5 pontos de habilidade)`;
+                pontosHabilidade+=5
             } else {
-                alert("Empate! Ninguém marcou pontos.");
+                resultado = `Você falhou na cesta de 3 pontos. 
+Pelo visto você não tem habilidade suficiente`;
             }
-        }
-    
-        if (energiaJogador <= 0) {
-            alert("Você perdeu a partida! O jogo acabou.");
-        } else {
-            alert("Você venceu a partida! A história continua....");
-        }
+            break;
+        case '2':
+            if (pontosHabilidade >= 30) {
+                resultado = `Você acertou a enterrada!! A torcida foi a loucura! 💪🔥 
+            (+5 pontos de habilidade)`;
+                pontosHabilidade+=5
+            } else {
+                resultado = `Você falhou na enterrada. 
+Pelo visto você não tem habilidade suficiente`;
+            }
+            break;
+        case '3':
+            if (pontosHabilidade >= 10) {
+                resultado = `Você acertou o passe e fez uma assistência!! 🏀🔥 
+            (+5 pontos de habilidade)`;
+                pontosHabilidade+=5
+            } else {
+                resultado = `Você falhou no passe. 
+Pelo visto você não tem habilidade suficiente`;
+            }
+            break;
+        case '4':
+            if (pontosHabilidade >= 20) {
+                resultado = `Você acertou o drible!! Seu técnico se surpreendeu! 🖐🔥 
+            (+5 pontos de habilidade)`;
+                pontosHabilidade+=5
+            } else {
+                resultado = `Você falhou no drible. 
+Pelo visto você não tem habilidade suficiente`;
+            }
+            break;
+        default:
+            resultado = "Opção inválida. Tente novamente.";
+    }
+    alert(resultado);
 }
 
 //************************************* Função que roda ao iniciar o jogo *************************************
@@ -124,104 +153,107 @@ function sortearHighSchool() {
 
 // Função para iniciar a jornada do atleta
 function iniciarJornadaAtleta(){
-    var habilidade = 0
     const opcao1 = prompt(`Você está no colégio, oque você faz?
         1 - Treinar 🏀
         2 - Estudar técnicas 🧠
         3 - Dormir 😪`)
     if(opcao1 == "1"){
         treino()
-        habilidade+=2
-        const opcao2 = prompt(`Você treinou e ficou com ${habilidade} pontos de habilidade, 
+        pontosHabilidade+=20
+        const opcao2 = prompt(`Você treinou e ficou com ${pontosHabilidade} pontos de habilidade, 
 você tem tempo para fazer mais uma coisa, oque você faz?
         1 - Estudar técnicas 🧠
         2 - Dormir 😪`)
         if(opcao2 == "1"){
-            habilidade+=1
+            pontosHabilidade+=20
             alert(`Você teve aulas sobre técnicas com o treinador. 
-Habilidade: ${habilidade}`)
+Habilidade: ${pontosHabilidade}`)
         }
         else if(opcao2 == "2"){
+            pontosHabilidade+=5
             alert(`Você dormiu até o final do intervalo! 
-Habilidade: ${habilidade}`)
+Habilidade: ${pontosHabilidade}`)
         }
     }
     else if(opcao1 == "2"){
         alert('Você teve aulas sobre técnicas com o treinador.')
-        habilidade+=1
-        const opcao2 = prompt(`Você estudou e ficou com ${habilidade} pontos de habilidade, 
+        pontosHabilidade+=20
+        const opcao2 = prompt(`Você estudou e ficou com ${pontosHabilidade} pontos de habilidade, 
 você tem tempo para fazer mais uma coisa, oque você faz?
         1 - Treinar 🏀
         2 - Dormir 😪`)
         if(opcao2 == "1"){
             treino()
-            habilidade+=2
-            alert(`Você treinou e ficou com ${habilidade} pontos de habilidade.`)
+            pontosHabilidade+=20
+            alert(`Você treinou e ficou com ${pontosHabilidade} pontos de habilidade.`)
         }
         else if(opcao2 == "2"){
+            ´pontosHabilidade+=5
             alert(`Você dormiu, o técnico ficou um pouco bravo! 
-Habilidade: ${habilidade}`)
+Habilidade: ${pontosHabilidade}`)
         }
     }
     else if(opcao1 == "3"){
         alert('Você dormiu o intervalo inteiro, o técnico ficou nervoso!')
+        pontosHabilidade+=10
     }
     alert("Começou o Draft da NBA 💪! Veja se você será Draftado!")    
     alert(`Você foi Draftado pelo ${sortearDraft()} na ${sortearAtleta()} posição! 
 Parabéns! 🎉🎉`)
+    jogoNba()
 }
 
 // Função para iniciar a jornada de uma estrela da NBA
 function iniciarJornadaEstrela(){
-    var habilidade = 0
     const opcao1 = prompt(`Você está no colégio, oque você faz?
         1 - Treinar 🏀
         2 - Estudar técnicas 🧠
         3 - Dormir 😪`)
         if(opcao1 == "1"){
             treino()
-            habilidade+=3
-            const opcao2 = prompt(`Você treinou e ficou com ${habilidade} pontos de habilidade, 
+            pontosHabilidade+=30
+            const opcao2 = prompt(`Você treinou e ficou com ${pontosHabilidade} pontos de habilidade, 
 você tem tempo para fazer mais uma coisa, oque você faz?
             1 - Estudar técnicas 🧠
             2 - Dormir 😪`)
             if(opcao2 == "1"){
-                habilidade+=2
+                pontosHabilidade+=20
                 alert(`Você teve aulas sobre técnicas com o treinador. 
-Habilidade: ${habilidade}`)
+Habilidade: ${pontosHabilidade}`)
             }
             else if(opcao2 == "2"){
-                habilidade++
+                pontosHabilidade+=10
                 alert(`Você dormiu até o final do intervalo! 
-Habilidade: ${habilidade}`)
+Habilidade: ${pontosHabilidade}`)
             }
         }
         else if(opcao1 == "2"){
             alert('Você teve aulas sobre técnicas com o treinador.')
-            habilidade+=2
-            const opcao2 = prompt(`Você estudou e ficou com ${habilidade} pontos de habilidade, 
+            pontosHabilidade+=20
+            const opcao2 = prompt(`Você estudou e ficou com ${pontosHabilidade} pontos de habilidade, 
 você tem tempo para fazer mais uma coisa, oque você faz?
             1 - Treinar 🏀
             2 - Dormir 😪`)
             if(opcao2 == "1"){
                 treino()
-                habilidade+=3
-                alert(`Você treinou e ficou com ${habilidade} pontos de habilidade`)
+                pontosHabilidade+=30
+                alert(`Você treinou e ficou com ${pontosHabilidade} pontos de habilidade`)
             }
             else if(opcao2 == "2"){
-                habilidade++
+                pontosHabilidade+=10
                 alert(`Você dormiu, o técnico ficou um pouco bravo!
-Habilidade: ${habilidade}`)
+Habilidade: ${pontosHabilidade}`)
             }
         }
         else if(opcao1 == "3"){
-            habilidade++
+            pontosHabilidade+=20
             alert(`Você dormiu o intervalo inteiro, o técnico ficou nervoso!
-Habilidade: ${habilidade}`)
+Habilidade: ${pontosHabilidade}`)
         }
-        alert("Começou o Draft da NBA 💪! Veja a colocação em que você será selecionado!")    
-        alert(`Você foi Draftado pelo ${sortearDraft()} na ${sortearEstrela()} posição!!! 
+    alert("Começou o Draft da NBA 💪! Veja a colocação em que você será selecionado!")    
+    alert(`Você foi Draftado pelo ${sortearDraft()} na ${sortearEstrela()} posição!!! 
 Grande promessa 🔥🔥`)
+    jogoNba()
 }
 
 //************************************* Função para sortear o time no draft *************************************
@@ -285,4 +317,17 @@ function sortearAtleta() {
   
     const sorteado2 = Math.floor(Math.random() * posiçãoAtleta.length);
     return posiçãoAtleta[sorteado2];
+  }
+//************************************* Função para os jogos na NBA *************************************
+
+  function jogoNba(){
+    const inicioNba = prompt('Essa é sua estreia na NBA!! Está preparado?? (S ou N)')
+    if (inicioNba === "S"){
+        alert('Seu primeiro jogo! Você entrou no inicio do segundo quarto e você recebe a bola...')
+        acaoJogador()
+    } else if(inicioNba === 'N') {
+        alert('Você teve um má início de carreira! Seu time perdeu e não classificou para a final!')
+    } else{
+        alert('Digite uma opção válida')
+    }
   }
