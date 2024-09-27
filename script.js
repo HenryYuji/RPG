@@ -92,7 +92,7 @@ Pelo visto você não tem habilidade suficiente.`;
             }
             break;
         default:
-            resultado = "Opção inválida. Tente novamente.";
+            resultado = "Opção inválida!";
     }
     alert(resultado);
 }
@@ -123,7 +123,7 @@ Pelo visto você não tem habilidade suficiente.`;
             pontosHabilidade+=5
             break;
         default:
-            resultado = "Opção inválida. Tente novamente.";
+            resultado = "Opção inválida!";
     }
     alert(resultado);
 }
@@ -136,21 +136,21 @@ function acaoJogador3() {
     let resultado;
     switch (opcao) {
         case '1':
-            if (pontosHabilidade >= 40) {
-                resultado = ``;
+            if (pontosHabilidade >= 55) {
+                resultado = `Com um toque de mágica e a pressão do tempo, ele arremessa de longe e a bola voa em arco perfeito, caindo na rede como se o destino estivesse ao seu favor! 🔥🔥🔥`;
                 pontosHabilidade+=5
             } else {
-                resultado = ``;
+                resultado = `Na última tentativa, ele se prepara para a cesta, mas a pressão é demais. A bola se despede do aro, e com isso, a vitória escorrega pelas mãos do time, deixando a torcida em silêncio e o adversário em êxtase.`;
             }
             break;
         case '2':
-            resultado = ``
+            resultado = `Você tenta segurar a bola e ganhar de 1 ponto de diferença, mas o seu marcador consegue roubar a bola e marcar uma bandeija para virar a partida faltando 5 segundo para acabar! `
             break;
         case '3':
-            resultado = ``;
+            resultado = `Você passa o ala que estava a frente, ele recebe o passe e consegue fazer uma bandeija milagrosa! Aumenta a diferença e vocês ganham a partida!! 🙌`;
             break;
         default:
-            resultado = "Opção inválida. Tente novamente.";
+            resultado = "Opção inválida!";
     }
     alert(resultado);
 }
@@ -252,13 +252,14 @@ Habilidade: ${pontosHabilidade}`)
         }
     }
     else if(opcao1 == "3"){
-        alert('Você dormiu o intervalo inteiro, o técnico ficou nervoso!')
         pontosHabilidade+=10
+        alert(`Você dormiu o intervalo inteiro, o técnico ficou nervoso! 
+Habilidade: ${pontosHabilidade}`)
     }
     alert("Começou o Draft da NBA 💪! Veja se você será Draftado!")    
     alert(`Você foi Draftado pelo ${sortearDraft()} na ${sortearAtleta()} posição! 
 Parabéns! 🎉🎉`)
-    jogoNba()
+    estreiaNba()
 }
 
 // Função para iniciar a jornada de uma estrela da NBA
@@ -311,7 +312,8 @@ Habilidade: ${pontosHabilidade}`)
     alert("Começou o Draft da NBA 💪! Veja a colocação em que você será selecionado!")    
     alert(`Você foi Draftado pelo ${sortearDraft()} na ${sortearEstrela()} posição!!! 
 Grande promessa 🔥🔥`)
-    jogoNba()
+    estreiaNba()
+
 }
 
 //************************************* Função para sortear o time no draft *************************************
@@ -349,10 +351,11 @@ function sortearDraft() {
         "Utah Jazz 🎷",
         "Washington Wizards 🧙"
     ];
-    
-  
     const sorteado = Math.floor(Math.random() * times.length);
-    return times[sorteado];
+    const timeSorteado = times[sorteado]
+    times.splice(sorteado, 1);
+
+    return timeSorteado;
   }
 
   //************************************* Função para sortear a posição das estrelas no draft *************************************
@@ -378,19 +381,62 @@ function sortearAtleta() {
   }
 //************************************* Função para os jogos na NBA *************************************
 
-  function jogoNba(){
+function estreiaNba(){
     const inicioNba = prompt('Essa é sua estreia na NBA!! Está preparado?? (S ou N)')
     if (inicioNba === "S"){
-        alert('Seu primeiro jogo! Você entrou no inicio do segundo quarto e você recebe a bola...')
+        alert(`Seu primeiro jogo vai ser contra o ${sortearDraft()}! Você entrou no inicio do segundo quarto e você recebe a bola...`)
         acaoJogador()
         alert('5 minutos do terceiro quarto, você recebe a bola na linha de 3 mas você está sendo marcado...')
         acaoJogador2()
         alert('Últimos 20 segundos de jogo! Você pegou o rebote defensivo, seu time está ganhando de 1 ponto...')
         acaoJogador3()
+        const fimDaPartida = prompt('Acabou a partida! Você deseja continuar?? (S ou N)')
+            if(fimDaPartida === 'S'){
+                finalNba()
+            }
+            else if(fimDaPartida === 'N'){
+                alert('Você não quis continuar jogando! Seu time não conseguiu se classificar para a Semi-Final!')
+                jornada()
+            }
+            else {
+                alert('Digite uma opção válida!')
+            }
     } else if(inicioNba === 'N') {
-        alert('Você teve um má início de carreira! Seu time perdeu e não classificou para a final!')
+        alert('Você teve um mau início de carreira! Seu time perdeu e não classificou para os Playoffs!')
+        jornada()
     } else{
         alert('Digite uma opção válida')
-        jogoNba()
+        estreiaNba()
     }
-  } 
+  }
+
+function finalNba(){
+    alert(`Hoje é o dia que todos esperavam: a grande final da NBA, onde os gigantes do basquete se enfrentam sob os holofotes!`)
+    alert(`Com cada drible e arremesso, o destino de campeões e desafortunados será decidido, e a emoção está no ar enquanto a torcida vibra, pronta para viver momentos inesquecíveis!`)
+    
+  }
+
+  //************************************* Função para jornada caso o jogador não se classificou *************************************
+
+function jornada(){
+    alert(`Começou uma nova temporada da NBA! Primeira partida será contra o ${sortearDraft()}!`)
+    alert('Você começou como titular, 5 minutos do primeiro quarto, você recebe a bola na linha de 3 mas você está sendo marcado...')
+    acaoJogador2()
+    alert('Você recebe a bola livre...')
+    acaoJogador()
+    alert('Segundo Quarto, você recebe a bola na linha de 3 sendo marcado...')
+    acaoJogador2()
+    alert('Terceiro quarto, você recebe a bola livre na linha de 3...')
+    acaoJogador()
+    const fimDaPartida = prompt('A partida terminou! Você deseja continuar?? (S ou N)')
+        if(fimDaPartida === 'S'){
+            finalNba()
+        }
+        else if(fimDaPartida === 'N'){
+             alert('Você não quis continuar jogando! Seu time não conseguiu se classificar para os Playoffs!')
+             jornada()
+         }
+         else {
+             alert('Digite uma opção válida!')
+         }
+}
