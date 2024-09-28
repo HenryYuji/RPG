@@ -448,7 +448,7 @@ function estreiaNba(){
   //************************************* Função para jornada caso o jogador não se classificou *************************************
 
 function jornada(){
-    alert(`Começou uma nova temporada da NBA! Primeira partida será contra o ${sortearDraft()}!`)
+    alert(`Começou uma nova temporada da NBA! A partida será contra o ${sortearDraft()}!`)
     alert('Você começou como reserva, 5 minutos do segundo quarto, você recebe a bola na linha de 3 mas você está sendo marcado...')
     acaoJogador2()
     alert('Segundo tempo, você recebe a bola livre...')
