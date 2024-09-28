@@ -463,7 +463,6 @@ function jornada(){
         }
         else if(fimDaPartida === 'N'){
              alert('Você não quis continuar jogando! Seu time não conseguiu se classificar para os Playoffs!')
-             jornada()
          }
          else {
              alert('Digite uma opção válida!')
