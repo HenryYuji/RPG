@@ -449,13 +449,13 @@ function estreiaNba(){
 
 function jornada(){
     alert(`Começou uma nova temporada da NBA! Primeira partida será contra o ${sortearDraft()}!`)
-    alert('Você começou como titular, 5 minutos do primeiro quarto, você recebe a bola na linha de 3 mas você está sendo marcado...')
+    alert('Você começou como reserva, 5 minutos do segundo quarto, você recebe a bola na linha de 3 mas você está sendo marcado...')
     acaoJogador2()
-    alert('Você recebe a bola livre...')
+    alert('Segundo tempo, você recebe a bola livre...')
     acaoJogador()
-    alert('Segundo Quarto, você recebe a bola na linha de 3 sendo marcado...')
+    alert('Terceiro Quarto, você recebe a bola na linha de 3 sendo marcado...')
     acaoJogador2()
-    alert('Terceiro quarto, você recebe a bola livre na linha de 3...')
+    alert('Quarto quarto, você recebe a bola livre na linha de 3...')
     acaoJogador()
     const fimDaPartida = prompt('A partida terminou! Você deseja continuar?? (S ou N)')
         if(fimDaPartida === 'S'){
