@@ -1,6 +1,7 @@
 //************************************* Funções que serão repetidas ao longo do jogo *************************************
 
 let pontosHabilidade = 0
+let time1 = sortearDraft()
 
 // Função para definir a variável pontos de habilidade
 function definirPontos(pontos) {
@@ -24,7 +25,7 @@ function definirPontos(pontos) {
         let numeroSorteadoInimigo = rolarDado();
 
         if (numeroSorteadoJogador > numeroSorteadoInimigo) {
-            energiaInimigo -= 1;
+            energiaInimigo -= 1
             alert(`O oponente tirou ${numeroSorteadoInimigo}. Você acertou uma cesta! A energia dele agora é ${energiaInimigo}`);
         } else if (numeroSorteadoJogador < numeroSorteadoInimigo) {
             energiaJogador -= 1;
@@ -38,6 +39,39 @@ function definirPontos(pontos) {
         alert("Você perdeu a partida! O treino acabou.");
     } else {
         alert("Você venceu a partida! A história continua....");
+    }
+}
+
+// Função para jogo da final da NBA
+function jogoNbaFinal() {
+    const time2 = sortearDraft()
+    let pontosTime1 = 0;
+    let pontosTime2 = 0;
+    const pontosParaVencer = 20;
+    alert(`Hoje é o dia que todos esperavam: a grande final da NBA, onde os gigantes do basquete se enfrentam sob os holofotes!`)
+    alert(`Com cada drible e arremesso, o destino de campeões e desafortunados será decidido, e a emoção está no ar enquanto a torcida vibra, pronta para viver momentos inesquecíveis!`)
+    alert(`Bem-vindo à Final da NBA!! ${time1} contra ${time2}. Quem será o campeão???`);
+    while (pontosTime1 < pontosParaVencer && pontosTime2 < pontosParaVencer) {
+        alert(`Placar: ${time1}: ${pontosTime1} | ${time2}: ${pontosTime2}. Role os dados!`);
+        let numeroSorteadoTime1 = rolarDado();
+        alert(`Vocês tiraram ${numeroSorteadoTime1}! Agora é a vez deles!`);
+        let numeroSorteadoTime2 = rolarDado();
+        alert(`Eles tiraram ${numeroSorteadoTime2}!`);
+
+        if (numeroSorteadoTime1 > numeroSorteadoTime2) {
+            pontosTime1 += 2
+            alert(`${time1} marcou uma cesta! Placar: ${pontosTime1}.`);
+        } else if (numeroSorteadoTime1 < numeroSorteadoTime2) {
+            pontosTime2 += 2
+            alert(`${time2} marcou uma cesta! Placar: ${pontosTime2}.`);
+        } else {
+            alert("Empate! Nenhum time marcou pontos nesta rodada.");
+        }
+    }
+    if (pontosTime1 >= pontosParaVencer) {
+        alert("Vocês venceram a partida!!! Parabéns, vocês são os campeões da NBA!!! 🥇");
+    } else {
+        alert("Os oponentes venceram!😔 Vocês tentaram o seu máximo, mas infelizmente não conseguiram! 🥈");
     }
 }
 
@@ -166,7 +200,7 @@ function iniciar() {
         case "1":
             const timeCollege = sortearHighSchool();
             const altura = sortearAltura();
-            alert(`O time sorteado foi ${timeCollege}! Você terá ${altura}m de altura! 
+            alert(`Você joga pelo colégio ${timeCollege}!! Você tem ${altura}m de altura! 
 Vamos começar...`);
             if (["Duke", "UConn", "Purdue", "Alabama"].includes(timeCollege)) {
                 iniciarJornadaEstrela();
@@ -257,7 +291,7 @@ Habilidade: ${pontosHabilidade}`)
 Habilidade: ${pontosHabilidade}`)
     }
     alert("Começou o Draft da NBA 💪! Veja se você será Draftado!")    
-    alert(`Você foi Draftado pelo ${sortearDraft()} na ${sortearAtleta()} posição! 
+    alert(`Você foi Draftado pelo ${time1} na ${sortearAtleta()} posição! 
 Parabéns! 🎉🎉`)
     estreiaNba()
 }
@@ -310,10 +344,9 @@ Habilidade: ${pontosHabilidade}`)
 Habilidade: ${pontosHabilidade}`)
         }
     alert("Começou o Draft da NBA 💪! Veja a colocação em que você será selecionado!")    
-    alert(`Você foi Draftado pelo ${sortearDraft()} na ${sortearEstrela()} posição!!! 
+    alert(`Você foi Draftado pelo ${time1} na ${sortearEstrela()} posição!!! 
 Grande promessa 🔥🔥`)
     estreiaNba()
-
 }
 
 //************************************* Função para sortear o time no draft *************************************
@@ -383,8 +416,10 @@ function sortearAtleta() {
 
 function estreiaNba(){
     const inicioNba = prompt('Essa é sua estreia na NBA!! Está preparado?? (S ou N)')
+    const time2 = sortearDraft()
     if (inicioNba === "S"){
-        alert(`Seu primeiro jogo vai ser contra o ${sortearDraft()}! Você entrou no inicio do segundo quarto e você recebe a bola...`)
+        alert(`${time1} x ${time2}`)
+        alert(`Seu primeiro jogo vai ser contra o ${time2}! Você entrou no inicio do segundo quarto e você recebe a bola...`)
         acaoJogador()
         alert('5 minutos do terceiro quarto, você recebe a bola na linha de 3 mas você está sendo marcado...')
         acaoJogador2()
@@ -392,7 +427,7 @@ function estreiaNba(){
         acaoJogador3()
         const fimDaPartida = prompt('Acabou a partida! Você deseja continuar?? (S ou N)')
             if(fimDaPartida === 'S'){
-                finalNba()
+                jogoNbaFinal()
             }
             else if(fimDaPartida === 'N'){
                 alert('Você não quis continuar jogando! Seu time não conseguiu se classificar para a Semi-Final!')
@@ -410,12 +445,6 @@ function estreiaNba(){
     }
   }
 
-function finalNba(){
-    alert(`Hoje é o dia que todos esperavam: a grande final da NBA, onde os gigantes do basquete se enfrentam sob os holofotes!`)
-    alert(`Com cada drible e arremesso, o destino de campeões e desafortunados será decidido, e a emoção está no ar enquanto a torcida vibra, pronta para viver momentos inesquecíveis!`)
-    
-  }
-
   //************************************* Função para jornada caso o jogador não se classificou *************************************
 
 function jornada(){
@@ -430,7 +459,7 @@ function jornada(){
     acaoJogador()
     const fimDaPartida = prompt('A partida terminou! Você deseja continuar?? (S ou N)')
         if(fimDaPartida === 'S'){
-            finalNba()
+            jogoNbaFinal()
         }
         else if(fimDaPartida === 'N'){
              alert('Você não quis continuar jogando! Seu time não conseguiu se classificar para os Playoffs!')
